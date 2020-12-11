@@ -1,6 +1,17 @@
 <template>
   <div class="hello">
-    <Vuemik :initialValues="{test:1, pwd:'password', check: true, textrar: 'hello',txt: 'toto', number: 59}" :onSubmit="onSubmit" v-slot="{handleSubmit}">
+    <Vuemik
+      :initialValues="{
+        test: 1,
+        pwd: 'password',
+        check: true,
+        textrar: 'hello',
+        txt: 'toto',
+        number: 59,
+      }"
+      :onSubmit="onSubmit"
+      v-slot="{ handleSubmit }"
+    >
       <Field name="test" class="formfield" component="select">
         <option value="1">ceci n'est pas un choix</option>
         <option value="2">ceci non plus</option>
@@ -14,26 +25,28 @@
 
       <Field name="number" component="input" type="number" />
 
-      <Field name="pwd" component="input" type="password"/>
+      <Field name="pwd" component="input" type="password" />
 
       <button @click="handleSubmit">submit</button>
     </Vuemik>
   </div>
 </template>
 
-<script>
-import Vuemik from "../vuemik/Vuemik.vue";
-import Field from "../vuemik/Field.vue";
+<script lang="ts">
+import Vuemik from '../vuemik/Vuemik.vue';
+import Field from '../vuemik/Field.vue';
 
 export default {
-  name: "HelloWorld",
+  name: 'HelloWorld',
   components: {
     Vuemik,
-    Field
+    Field,
   },
   methods: {
-    onSubmit: (e) => {window.console.log(e)}
-  }
+    onSubmit: (e: Event) => {
+      window.console.log(e);
+    },
+  },
 };
 </script>
 

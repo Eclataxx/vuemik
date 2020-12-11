@@ -4,8 +4,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
   name: 'Vuemik',
   props: {
     onSubmit: { type: Function, required: true },
@@ -16,7 +18,7 @@ export default {
       values: JSON.parse(JSON.stringify(this.initialValues)),
     };
   },
-  provide() {
+  provide(): {} {
     return {
       vuemik: {
         values: this.values,
@@ -25,35 +27,43 @@ export default {
     };
   },
   methods: {
-    eventOrValue(e) {
+    isSelectElement(
+      element: HTMLSelectElement | HTMLInputElement | EventTarget,
+    ): element is HTMLSelectElement {
+      return (element as HTMLSelectElement).options !== undefined;
+    },
+    isInputElement(
+      element: HTMLSelectElement | HTMLInputElement | EventTarget,
+    ): element is HTMLInputElement {
+      return (element as HTMLInputElement).type !== undefined;
+    },
+    eventOrValue(e: { target: Element }): string | boolean {
       if (!(e instanceof Event)) {
-        throw new Error("Instance of Event expected");
+        throw new Error('Instance of Event expected');
       }
 
-      if (e.target.options) {
+      if (this.isSelectElement(e.target)) {
         const selectedOption = e.target.options[e.target.selectedIndex];
-        return selectedOption._value !== undefined
-          ? selectedOption._value
-          : selectedOption.value;
+        return selectedOption.value;
       }
 
-      if (e.target.type === "checkbox") {
+      if (this.isInputElement(e.target)) {
         return e.target.checked;
       }
 
-      return e.target.value;
+      return 'e.target.value';
     },
-    handleChange(e) {
+    handleChange(e: { target: HTMLInputElement }): void {
       this.setValues({ [e.target.name]: this.eventOrValue(e) });
     },
-    setValues(values) {
+    setValues(values: {}): void {
       Object.entries(values).forEach(([key, val]) => {
-        this.$data.values[key] = val; 
+        this.$data.values[key] = val;
       });
     },
-    handleSubmit() {
+    handleSubmit(): void {
       this.onSubmit(this.values);
     },
   },
-};
+});
 </script>

@@ -2,10 +2,12 @@
   <textarea></textarea>
 </template>
 
-<script>
-export default {
-name: "Textarea",
-}
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
+  name: 'Textarea',
+});
 </script>
 
 <style scoped>
