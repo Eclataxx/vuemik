@@ -9,7 +9,3 @@ export default Vue.extend({
   name: 'Input',
 });
 </script>
-
-<style scoped>
-
-</style>

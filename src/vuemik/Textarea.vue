@@ -9,7 +9,3 @@ export default Vue.extend({
   name: 'Textarea',
 });
 </script>
-
-<style scoped>
-
-</style>

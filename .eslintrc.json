@@ -14,5 +14,6 @@
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "ecmaVersion": 2020
-  }
+  },
+  "ignorePatterns": ["dist/*", "*.config.js"]
 }
