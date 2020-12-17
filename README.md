@@ -20,11 +20,11 @@ Vue SFCs example
   <Vuemik
     :initialValues="{
       select: 1,
-      password: 'password',
-      checkbox: true,
-      textarea: 'hello',
-      text: 'toto',
-      number: 59,
+      textarea: 'Write stuff here...',
+      checkbox: false,
+      number: 42,
+      text: 'Username',
+      password: 's3cr3t',
     }"
     :onSubmit="onSubmit"
     v-slot="{ handleSubmit }"
