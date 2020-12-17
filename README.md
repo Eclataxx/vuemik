@@ -44,8 +44,7 @@ Vue SFCs example
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import Vuemik from '../vuemik/Vuemik.vue';
-  import Field from '../vuemik/Field.vue';
+  import { Vuemik, Field } from 'vuemik';
 
   export default defineComponent({
     name: 'App',
