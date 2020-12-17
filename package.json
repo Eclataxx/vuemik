@@ -1,22 +1,22 @@
 {
-  "name": "testing-vuemik",
-  "description": "testing stuff",
-  "version": "1.0.5",
-  "license": "MIT",
+  "name": "vuemik",
+  "version": "1.0.2",
   "private": false,
-  "main": "dist/vuemik.js",
-  "module": "dist/vuemik.es.js",
-  "types": "dist/index.d.ts",
+  "description": "Basic form builder for Vue.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "rollup -c",
-    "dev": "rollup -cw",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "dev": "rollup -cw"
   },
+  "main": "dist/vuemik.js",
+  "module": "dist/vuemik.es.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
-    "vue": "^2.6.12"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.1.0",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "^4.5.9",
@@ -29,13 +29,11 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-vue": "^7.0.0-alpha.0",
     "rollup": "^2.35.1",
     "rollup-plugin-typescript2": "^0.29.0",
     "rollup-plugin-vue": "^6.0.0",
-    "typescript": "~3.9.3",
-    "vue": "^2.6.12",
-    "vue-template-compiler": "^2.6.12"
+    "typescript": "~3.9.3"
   },
   "postcss": {
     "plugins": {
@@ -45,5 +43,6 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "license": "MIT"
 }

@@ -6,14 +6,13 @@
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
-    "allowJs": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "declarationMap": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "declaration": true,
-    "declarationDir": "./dist",
-    "declarationMap": true,
     "baseUrl": ".",
     "types": [
       "webpack-env"

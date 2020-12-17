@@ -1,5 +1,5 @@
-import vue from 'rollup-plugin-vue';
 import typescript from 'rollup-plugin-typescript2';
+import vuePlugin from 'rollup-plugin-vue';
 
 import pkg from './package.json';
 
@@ -9,6 +9,10 @@ const banner = `/**
  * @license MIT
  */`;
 
+const globals = {
+  vue: 'Vue',
+}
+
 export default {
   input: 'src/index.ts',
   output: [
@@ -16,23 +20,20 @@ export default {
       file: pkg.main,
       format: 'cjs',
       banner,
+      globals,
     },
     {
       file: pkg.module,
       format: 'es',
       banner,
+      globals,
     },
   ],
   external: [
     'vue'
   ],
   plugins: [
-    vue({
-        compileTemplate: true,
-        target: 'browser'
-    }),
-    typescript({
-      typescript: require('typescript'),
-    }),
+    typescript(),
+    vuePlugin(),
   ],
 };

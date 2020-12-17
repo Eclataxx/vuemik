@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'Vuemik',
   props: {
     onSubmit: { type: Function, required: true },
@@ -28,14 +28,15 @@ export default Vue.extend({
   },
   methods: {
     isSelectElement(
-      element: HTMLSelectElement | HTMLInputElement | EventTarget,
+      element: HTMLSelectElement | HTMLInputElement | EventTarget | HTMLTextAreaElement,
     ): element is HTMLSelectElement {
       return (element as HTMLSelectElement).options !== undefined;
     },
     isInputElement(
-      element: HTMLSelectElement | HTMLInputElement | EventTarget,
+      element: HTMLSelectElement | HTMLInputElement | EventTarget | HTMLTextAreaElement,
     ): element is HTMLInputElement {
-      return (element as HTMLInputElement).type !== undefined;
+      return ((element as HTMLInputElement).type !== undefined
+       && (element as HTMLInputElement).type !== 'textarea');
     },
     eventOrValue(e: { target: Element }): string | boolean {
       if (!(e instanceof Event)) {
@@ -48,10 +49,14 @@ export default Vue.extend({
       }
 
       if (this.isInputElement(e.target)) {
-        return e.target.checked;
+        if (e.target.type === 'checkbox') {
+          return e.target.checked;
+        }
+
+        return e.target.value;
       }
 
-      return 'e.target.value';
+      return (e.target as HTMLTextAreaElement).value;
     },
     handleChange(e: { target: HTMLInputElement }): void {
       this.setValues({ [e.target.name]: this.eventOrValue(e) });
