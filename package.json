@@ -1,6 +1,6 @@
 {
   "name": "vuemik",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": false,
   "description": "Basic form builder for Vue.js",
   "scripts": {
@@ -12,6 +12,9 @@
   "main": "dist/vuemik.js",
   "module": "dist/vuemik.es.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "vue": "^3.0.0"
   },
